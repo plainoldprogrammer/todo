@@ -6,9 +6,11 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 
 void logCommandLineArguments();
 void processCommandLineArguments();
+void displayProgramVersion();
 
 int main(int argc, char *argv[])
 {
@@ -33,12 +35,27 @@ void logCommandLineArguments(int argc, char *argv[])
 
 void processCommandLineArguments(int argc, char *argv[])
 {
-	int i = 0;
-
-	while (i < argc)
+	if (argc == 2)
 	{
-		printf("processing argv[%d]\n", i);
-		i++;
+		if (strcmp(argv[1], "--version") == 0)
+		{
+			displayProgramVersion();
+		}
 	}
+	else if (argc >= 3)
+	{
+		int i = 0;
+
+		while (i < argc)
+		{
+			printf("processing argv[%d]\n", i);
+			i++;
+		}
+	}
+}
+
+void displayProgramVersion()
+{
+	printf("pos version 0.0.1 (Alpha)");
 }
 
